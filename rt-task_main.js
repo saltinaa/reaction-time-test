@@ -22,20 +22,16 @@ var instructions = {
         "press the SPACE key as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
         "<p>Press any key to begin.</p>",
-    //post_trial_gap: 2000
+    post_trial_gap: 2000
 };
 timeline.push(instructions);
 
 /* test trials */
 
-var test_stimuli = [{
+var test_stimuli = {
         stimulus: repo_site + "img/blue.png", // Change 3: Adding `repo_site` in `test_stimuli`
-        data: {
-            test_part: 'test',
-            correct_response: ' '
-        }
-    }
-];
+        data: { test_part: 'test', correct_response: ' ' }
+}
 
 var fixation = {
     type: 'html-keyboard-response',
