@@ -22,7 +22,6 @@ var instructions = {
         "press the SPACE key as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
         "<p>Press any key to begin.</p>",
-    //post_trial_gap: 2000
 };
 timeline.push(instructions);
 
