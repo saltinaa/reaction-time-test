@@ -40,7 +40,7 @@ var fixation = {
     timeline: [toosoon],
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
-    choices: [' '],
+    choices: ' ',
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
@@ -54,13 +54,13 @@ var toosoon = {
     type: 'html-keyboard-response',
     stimulus: "<p>Too soon! Wait for the blue circle to appear before pressing SPACE." + 
           "<p>Press SPACE to try again.</p>",
-    choices: " "
+    choices: ' '
 }
 
 var test = {
     type: "image-keyboard-response",
     stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: [' '],
+    choices: ' ',
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
