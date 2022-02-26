@@ -37,15 +37,24 @@ var test_stimuli = [{
 ];
 
 var fixation = {
+    timeline: [toosoon],
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
-    choices: jsPsych.NO_KEYS,
+    choices: [' '],
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
+    post_trial_gap: 2500,
     data: {
         test_part: 'fixation'
     }
+}
+
+var toosoon = {
+    type: 'html-keyboard-response',
+    stimulus: "<p>Too soon! Wait for the blue circle to appear before pressing SPACE." + 
+          "<p>Press SPACE to try again.</p>",
+    choices: " "
 }
 
 var test = {
