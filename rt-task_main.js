@@ -32,8 +32,7 @@ var test_stimuli = [{
         stimulus: repo_site + "img/blue.png", // Change 3: Adding `repo_site` in `test_stimuli`
         data: {
             test_part: 'test',
-            correct_response: ' ',
-            early_response: ' '
+            correct_response: ' '
         }
     }
 ];
@@ -46,7 +45,7 @@ var fixation = {
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
-    data: { test_part: fixation }
+    data: { test_part: 'fixation' }
     conditional_function: function(){
         if (data.key_press) {
             return true;
