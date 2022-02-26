@@ -48,7 +48,7 @@ var fixation = {
     data: {
         test_part: 'fixation',
         early_response: ' '
-    }
+    },
     on_finish: function (data) {
         data.early = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.early_response);
     },
