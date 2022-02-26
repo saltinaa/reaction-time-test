@@ -46,13 +46,9 @@ var fixation = {
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
-    data: jsPsych.timelineVariable('data'),
-    on_finish: function (data) {
-        data.early = 0,
-        data.early = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.early_response);
-    },
+    data: { test_part: fixation }
     conditional_function: function(){
-        if (data.early != 0) {
+        if (data.key_press) {
             return true;
         } else {
             return false;
