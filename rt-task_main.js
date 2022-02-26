@@ -9,21 +9,19 @@ var timeline = [];
 
 /* define welcome message trial */
 var welcome_block = {
-    type: "html-button-response",
-    stimulus: "<p>Welcome to the experiment. Press the start button to begin.</p>",
-    choices: ['Start']
+    type: "html-keyboard-response",
+    stimulus: "<p>Welcome to the experiment. Press any key to begin.</p>",
 };
 timeline.push(welcome_block);
 
 /* define instructions trial */
 var instructions = {
-    type: "html-button-response",
-    stimulus: "<p>In this experiment, a blue circle will appear in the center " +
-        "of the screen.</p><p>When you see the circle, click the button " +
-        "below the circle as fast as you can.</p>" +
+    type: "html-keyboard-response",
+    stimulus: "<p>In this experiment, a blue circle like the one below will " +
+        "appear in the center of the screen.</p><p>When you see the circle, " +
+        "press the SPACE key as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
-        "<p>Click the button below to start.</p>",
-    choices: ['Start']
+        "<p>Press any key to begin.</p>",
 };
 timeline.push(instructions);
 
@@ -33,20 +31,13 @@ var test_stimuli = [{
         stimulus: repo_site + "img/blue.png", // Change 3: Adding `repo_site` in `test_stimuli`
         data: {
             test_part: 'test',
-            correct_response: 'f'
-        }
-    },
-    {
-        stimulus: repo_site + "img/orange.png", // Change 3: Adding `repo_site` in `test_stimuli`
-        data: {
-            test_part: 'test',
-            correct_response: 'j'
+            correct_response: ' '
         }
     }
 ];
 
 var fixation = {
-    type: 'html-button-response',
+    type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
     choices: jsPsych.NO_KEYS,
     trial_duration: function () {
@@ -58,9 +49,9 @@ var fixation = {
 }
 
 var test = {
-    type: "image-button-response",
+    type: "image-keyboard-response",
     stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: ['f', 'j'],
+    choices: [' '],
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
@@ -78,7 +69,7 @@ timeline.push(test_procedure);
 /* define debrief */
 
 var debrief_block = {
-    type: "html-button-response",
+    type: "html-keyboard-response",
     stimulus: function () {
 
         var trials = jsPsych.data.get().filter({
@@ -90,8 +81,7 @@ var debrief_block = {
         var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
         var rt = Math.round(correct_trials.select('rt').mean());
 
-        return "<p>You responded correctly on " + accuracy + "% of the trials.</p>" +
-            "<p>Your average response time was " + rt + "ms.</p>" +
+        return "<p>Your average response time was " + rt + "ms.</p>" +
             "<p>Press any key to complete the experiment. Thank you!</p>";
 
     }
