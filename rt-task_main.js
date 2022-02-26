@@ -22,6 +22,7 @@ var instructions = {
         "press the SPACE key as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
         "<p>Press any key to begin.</p>",
+    post_trial_gap: 2000
 };
 timeline.push(instructions);
 
@@ -31,21 +32,31 @@ var test_stimuli = [{
         stimulus: repo_site + "img/blue.png", // Change 3: Adding `repo_site` in `test_stimuli`
         data: {
             test_part: 'test',
-            correct_response: ' '
+            correct_response: ' ',
+            early_response: ' '
         }
     }
 ];
 
 var fixation = {
+    timeline: [toosoon],
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
     choices: ' ',
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
-    post_trial_gap: 2500,
-    data: {
-        test_part: 'fixation'
+    data: jsPsych.timelineVariable('data'),
+    on_finish: function (data) {
+        data.early = 0,
+        data.early = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.early_response);
+    },
+    conditional_function: function(){
+        if (data.early != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
