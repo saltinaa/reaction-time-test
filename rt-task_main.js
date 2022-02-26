@@ -22,31 +22,50 @@ var instructions = {
         "press the SPACE key as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
         "<p>Press any key to begin.</p>",
-    post_trial_gap: 2000
+    //post_trial_gap: 2000
 };
 timeline.push(instructions);
 
 /* test trials */
 
-var test_stimuli = {
+var test_stimuli = [{
         stimulus: repo_site + "img/blue.png", // Change 3: Adding `repo_site` in `test_stimuli`
-        data: { test_part: 'test', correct_response: ' ' }
-}
+        data: {
+            test_part: 'test',
+            correct_response: ' '
+        }
+    }
+];
 
 var fixation = {
+    timeline: [toosoon],
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
-    choices: jsPsych.NO_KEYS,
+    choices: [' '],
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
-    data: {test_part: 'fixation'}
+    data: { test_part: 'fixation' }
+    conditional_function: function(){
+        if (data.key_press) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+var toosoon = {
+    type: 'html-keyboard-response',
+    stimulus: "<p>Too soon! Wait for the blue circle to appear before pressing SPACE." + 
+          "<p>Press SPACE to try again.</p>",
+    choices: [' ']
 }
 
 var test = {
     type: "image-keyboard-response",
     stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: ' ',
+    choices: [' '],
     data: jsPsych.timelineVariable('data'),
     on_finish: function (data) {
         data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
