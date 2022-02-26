@@ -50,6 +50,7 @@ var fixation = {
 }
 
 var toosoon = {
+    timeline: [fixation]
     type: "html-keyboard-response",
     stimulus: 'You pressed too soon.',
     choices: [' ']
@@ -66,7 +67,7 @@ var test = {
 }
 
 var test_procedure = {
-    timeline: [fixation, test, toosoon],
+    timeline: [fixation, test],
     timeline_variables: test_stimuli,
     repetitions: 25,
     randomize_order: true
