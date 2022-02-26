@@ -41,7 +41,7 @@ var fixation = {
     timeline: [toosoon],
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
-    choices: ' ',
+    choices: [' '],
     trial_duration: function () {
         return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
