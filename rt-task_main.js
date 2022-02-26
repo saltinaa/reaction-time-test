@@ -53,7 +53,7 @@ var fixation = {
         data.early = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.early_response);
     },
     conditional_function: function(){
-        if (data.early == 0) {
+        if (data.early > 0) {
             return true;
         } else {
             return false;
