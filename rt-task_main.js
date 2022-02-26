@@ -10,7 +10,7 @@ var timeline = [];
 /* define welcome message trial */
 var welcome_block = {
     type: "html-keyboard-response",
-    stimulus: "<p>Welcome to the experiment. Press any2 key to begin.</p>",
+    stimulus: "<p>Welcome to the experiment. Press any key to begin.</p>",
 };
 timeline.push(welcome_block);
 
@@ -50,6 +50,7 @@ var fixation = {
 }
 
 var toosoon = {
+    type: "html-keyboard-response",
     stimulus: 'You pressed too soon.',
     choices: [' ']
 }
