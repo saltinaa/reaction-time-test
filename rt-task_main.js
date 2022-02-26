@@ -9,14 +9,14 @@ var timeline = [];
 
 /* define welcome message trial */
 var welcome_block = {
-    type: "html-keyboard-response",
+    type: "html-button-response",
     stimulus: "Welcome to the experiment. Press any key to begin."
 };
 timeline.push(welcome_block);
 
 /* define instructions trial */
 var instructions = {
-    type: "html-keyboard-response",
+    type: "html-button-response",
     stimulus: "<p>In this experiment, a circle will appear in the center " +
         "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
         "press the letter F on the keyboard as fast as you can.</p>" +
@@ -52,7 +52,7 @@ var test_stimuli = [{
 ];
 
 var fixation = {
-    type: 'html-keyboard-response',
+    type: 'html-button-response',
     stimulus: '<div style="font-size:60px;">+</div>',
     choices: jsPsych.NO_KEYS,
     trial_duration: function () {
@@ -64,7 +64,7 @@ var fixation = {
 }
 
 var test = {
-    type: "image-keyboard-response",
+    type: "image-button-response",
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: ['f', 'j'],
     data: jsPsych.timelineVariable('data'),
@@ -84,7 +84,7 @@ timeline.push(test_procedure);
 /* define debrief */
 
 var debrief_block = {
-    type: "html-keyboard-response",
+    type: "html-button-response",
     stimulus: function () {
 
         var trials = jsPsych.data.get().filter({
