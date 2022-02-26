@@ -11,7 +11,7 @@ var timeline = [];
 var welcome_block = {
     type: "html-button-response",
     stimulus: "Welcome to the experiment. Press any key to begin.",
-    choice: ['Start']
+    choices: ['Start']
 };
 timeline.push(welcome_block);
 
