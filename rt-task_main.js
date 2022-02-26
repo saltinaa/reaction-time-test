@@ -9,7 +9,7 @@ var timeline = [];
 
 /* define welcome message trial */
 var welcome_block = {
-    type: "html-keyboard-response",
+    type: "html-button-response",
     stimulus: "Welcome to the experiment. Press any key to begin.",
     choice: ['Start']
 };
