@@ -18,8 +18,8 @@ timeline.push(welcome_block);
 /* define instructions trial */
 var instructions = {
     type: "html-button-response",
-    stimulus: "<p>In this experiment, a circle will appear in the center " +
-        "of the screen.</p><p>When you see the circle, click the button" +
+    stimulus: "<p>In this experiment, a blue circle will appear in the center " +
+        "of the screen.</p><p>When you see the circle, click the button " +
         "below the circle as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
         "<p>Click the button below to start.</p>",
