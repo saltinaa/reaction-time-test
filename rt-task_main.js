@@ -47,23 +47,7 @@ var fixation = {
     },
     data: {
         test_part: 'fixation',
-        early_response: ' '
-    },
-    on_finish: function (data) {
-        data.early = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.early_response);
-        if (data.early == 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
-}
-
-var toosoon = {
-    type: 'html-keyboard-response',
-    stimulus: "<p>Too soon! Wait for the blue circle to appear before pressing SPACE." + 
-          "<p>Press SPACE to try again.</p>",
-    choices: ' '
 }
 
 var test = {
