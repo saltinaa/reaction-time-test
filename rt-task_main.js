@@ -37,6 +37,7 @@ var test_stimuli = [{
 ];
 
 var fixation = {
+    timeline: [toosoon],
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
     choices: [' '],
@@ -46,6 +47,11 @@ var fixation = {
     data: {
         test_part: 'fixation'
     }
+}
+
+var toosoon = {
+    stimulus: 'You pressed too soon.',
+    choices: [' ']
 }
 
 var test = {
