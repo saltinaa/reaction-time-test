@@ -23,7 +23,8 @@ var instructions = {
         "below the circle as fast as you can.</p>" +
         "<img src='" + repo_site + "img/blue.png'></img>" +
         "<p>Click the button below to start.</p>",
-    post_trial_gap: 2000
+    post_trial_gap: 2000,
+    choices: [' ']
 };
 timeline.push(instructions);
 
