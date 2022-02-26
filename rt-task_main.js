@@ -41,7 +41,7 @@ var fixation = {
     stimulus: '<div style="font-size:60px;">+</div>',
     choices: jsPsych.NO_KEYS,
     trial_duration: function () {
-        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+        return jsPsych.randomization.sampleWithReplacement([500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500], 1)[0];
     },
     data: {
         test_part: 'fixation'
@@ -61,7 +61,7 @@ var test = {
 var test_procedure = {
     timeline: [fixation, test],
     timeline_variables: test_stimuli,
-    repetitions: 5,
+    repetitions: 25,
     randomize_order: true
 }
 timeline.push(test_procedure);
